@@ -8,25 +8,29 @@
 
 
 function generateField(domElement, limit) {
+    fieldElement.innerHTML = '';
     console.log(this);
 
     // genera la griglia
-    for (let i = 0; i < limit; i++) {
+    if (fieldElement.classList.contains("filed")) {
+        for (let i = 0; i < limit; i++) {
 
-        const cellElement = document.createElement('div')
-        cellElement.className = 'cell'
-        cellElement.append(i + 1)
-        domElement.append(cellElement)
+            const cellElement = document.createElement('div')
+            cellElement.className = 'cell'
+            cellElement.append(i + 1)
+            domElement.append(cellElement)
 
-        console.log(cellElement);
 
-        // aggiungo l'event listener alla cella che ho appena generato
-        cellElement.addEventListener('click', function () {
-            //console.log('ho cliccato il numero:', cellElement);
-            this.classList.toggle('bg-lightblue')
-            console.log('Il numero selezionato è ' + this.innerHTML);
-        })
 
+            console.log(cellElement);
+            // aggiungo l'event listener alla cella che ho appena generato
+            cellElement.addEventListener('click', function () {
+                //console.log('ho cliccato il numero:', cellElement);
+                this.classList.toggle('bg-lightblue')
+                console.log('Il numero selezionato è ' + this.innerHTML);
+            })
+
+        }
     }
 }
 const startButton = document.querySelector('button');
@@ -37,6 +41,8 @@ startButton.addEventListener('click', function () {
     fieldElement.classList.toggle('filed');
     generateField(fieldElement, limit);
 })
+
+
 
 
 
